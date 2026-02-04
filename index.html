@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Sanu ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    width: 90%;
+    max-width: 440px;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+    animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+    color: #ff4d6d;
+}
+
+p {
+    font-size: 18px;
+    color: #444;
+    min-height: 90px;
+}
+
+button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#nextBtn {
+    background: #ff4d6d;
+    color: white;
+}
+
+#yesBtn {
+    background: #38b000;
+    color: white;
+}
+
+#noBtn {
+    background: #e63946;
+    color: white;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>💖 My Sanu 💖</h1>
+
+    <p id="quote">
+        "Sanu, every time you smile, my heart forgets how to behave."
+    </p>
+
+    <button id="nextBtn" onclick="nextQuote()">Next 💕</button>
+
+    <div id="question" class="hidden">
+        <p><strong>Sanu… will you be my Valentine? 💘</strong></p>
+        <button id="yesBtn" onclick="sayYes()">YES 😍</button>
+        <button id="noBtn">NO 🙈</button>
+    </div>
+
+    <div id="final" class="hidden">
+        <h1>YAYYYY 💞</h1>
+        <p>
+            I knew it 😌❤️<br><br>
+            Sanu, you are officially my Valentine forever 🌹<br>
+            Now come here, I deserve a hug 🤗
+        </p>
+    </div>
+</div>
+
+<script>
+const quotes = [
+    "Sanu, every time you smile, my heart forgets how to behave.",
+    "Sanu, you’re not my type — you’re my weakness ❤️",
+    "I didn’t believe in magic until I met you, Sanu ✨",
+    "Sanu, you’re the reason my days feel softer.",
+    "If love had a name, I’d call it Sanu."
+];
+
+let index = 0;
+
+function nextQuote() {
+    index++;
+    if (index < quotes.length) {
+        document.getElementById("quote").innerText = `"${quotes[index]}"`;
+    } else {
+        document.getElementById("quote").classList.add("hidden");
+        document.getElementById("nextBtn").classList.add("hidden");
+        document.getElementById("question").classList.remove("hidden");
+    }
+}
+
+const noTexts = [
+    "Nice try 😏",
+    "You can’t escape this 😈",
+    "Sanu pleaseee 🥺",
+    "Almost clicked it huh?",
+    "Nope 😂",
+    "Think again 💭",
+    "Heart says yes 💓",
+    "Cursor too slow 😌",
+    "Not allowed 🚫",
+    "Try harder 😏",
+    "I know you want to 😘",
+    "Stop teasing me 😭",
+    "That button is shy 🙈",
+    "Okay now this is funny 😂",
+    "Sanuuuu 💔",
+    "You’re smiling right now 😁",
+    "Just say yes already 😌",
+    "Running awayyy 🏃‍♀️",
+    "Love detected ❤️",
+    "Final answer must be YES 😍"
+];
+
+let noIndex = 0;
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    noBtn.innerText = noTexts[noIndex % noTexts.length];
+    noIndex++;
+});
+
+function sayYes() {
+    document.getElementById("question").classList.add("hidden");
+    noBtn.classList.add("hidden");
+    document.getElementById("final").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
